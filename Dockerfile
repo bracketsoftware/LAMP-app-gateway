@@ -1,4 +1,5 @@
-FROM node:17.9.0-alpine3.14
+FROM node:22-alpine3.21
+
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
@@ -11,5 +12,4 @@ RUN wget -O /usr/local/share/ca-certificates/comodoca.crt "https://comodoca.my.s
 #Update the certificate store
 RUN update-ca-certificates
 COPY . .
-EXPOSE 3000
 CMD [ "node", "app.js" ]
